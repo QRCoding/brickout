@@ -80,10 +80,7 @@ ballAttr = attrName "ball"
 handleEvent :: BrickEvent Name Tick -> EventM Name Game ()
 handleEvent e = do
     case e of
-        -- AppEvent Tick -> do
-        --     g <- get
-        --     g' <- liftIO $ step g
-        --     put g'
+        AppEvent Tick -> modify step
         VtyEvent vtye ->
             case vtye of
                 V.EvKey (V.KChar 'a') [] -> modify $ move L
